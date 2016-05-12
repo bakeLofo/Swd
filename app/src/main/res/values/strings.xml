@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">SWD</string>
+    <string name="selectdate">Wybierz datę</string>
+    <string name="data_wyjazdu">Data wyjazdu</string>
+    <string name="data_powrotu">Data powrotu</string>
+    <string name="wybierz_dat">Wybierz datę...</string>
+    <string name="miejsce">Miejsce</string>
+    <string name="morze">Morze</string>
+    <string name="mountains">Góry</string>
+    <string name="jezioro">Jezioro</string>
+    <string name="miasto">Miasto</string>
+    <string name="klimat">Klimat</string>
+    <string name="cieplo">Ciepło, bez opadów</string>
+    <string name="umiarkowanie">Umiarkowanie</string>
+    <string name="chlodno">Zimno</string>
+    <string name="snieg">snieg</string>
+    <string name="aktywnosc">Aktywność</string>
+    <string name="opalanie">Opalanie się</string>
+    <string name="zwiedzanie">Zwiedzanie</string>
+    <string name="sport">Sport</string>
+    <string name="muzeum">Muzeum</string>
+    <string name="ruiny">Ruiny</string>
+    <string name="swiatynia_zamek">Świątynia lub zamek</string>
+    <string name="pomnik">Pomnik</string>
+    <string name="natura">Natura</string>
+    <string name="narty_snowboard">Narty/snowboard</string>
+    <string name="cena">Cena</string>
+    <string name="transport">Środek transportu</string>
+    <string name="prom">Prom</string>
+    <string name="autokar">Autokar</string>
+    <string name="pociag">Pociąg</string>
+    <string name="samochod">Samochód</string>
+    <string name="samolot">Samolot</string>
+    <string name="wyznacz">Wyznacz</string>
+    <string name="tajlandia">Tajlandia</string>
+</resources>
