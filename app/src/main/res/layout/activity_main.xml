@@ -78,25 +78,25 @@
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/calendar_icon"
+                    android:src="@drawable/morze"
                     android:contentDescription="@string/morze"
                     android:id="@+id/morze"/>
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/calendar_icon"
+                    android:src="@drawable/gory"
                     android:contentDescription="@string/mountains"
                     android:id="@+id/gory"/>
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/calendar_icon"
+                    android:src="@drawable/jezioro"
                     android:contentDescription="@string/jezioro"
                     android:id="@+id/jezioro"/>
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/calendar_icon"
+                    android:src="@drawable/miasto"
                     android:contentDescription="@string/miasto"
                     android:id="@+id/miasto"/>
             </LinearLayout>
@@ -112,22 +112,22 @@
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/calendar_icon"
+                    android:src="@drawable/slonce"
                     android:contentDescription="@string/cieplo" />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/calendar_icon"
+                    android:src="@drawable/umi"
                     android:contentDescription="@string/umiarkowanie" />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/calendar_icon"
+                    android:src="@drawable/zimno"
                     android:contentDescription="@string/chlodno" />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/calendar_icon"
+                    android:src="@drawable/snieg"
                     android:contentDescription="@string/snieg" />
             </LinearLayout>
 
@@ -143,19 +143,19 @@
                     android:id="@+id/opalanie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/calendar_icon"
+                    android:src="@drawable/opalanie"
                     android:contentDescription="@string/opalanie" />
                 <ImageButton
                     android:id="@+id/zwiedzanie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/calendar_icon"
+                    android:src="@drawable/zwiedzanie"
                     android:contentDescription="@string/zwiedzanie" />
                 <ImageButton
                     android:id="@+id/sport"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/calendar_icon"
+                    android:src="@drawable/sport"
                     android:contentDescription="@string/sport" />
             </LinearLayout>
 
@@ -224,33 +224,40 @@
             <LinearLayout android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:id="@+id/transp">
+                android:id="@+id/transp1">
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/calendar_icon"
+                    android:src="@drawable/samolot"
                     android:contentDescription="@string/samolot" />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/calendar_icon"
+                    android:src="@drawable/samochod"
                     android:contentDescription="@string/samochod" />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/calendar_icon"
+                    android:src="@drawable/pociag"
                     android:contentDescription="@string/pociag" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:id="@+id/transp2">
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/calendar_icon"
+                    android:src="@drawable/autokar"
                     android:contentDescription="@string/autokar" />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/calendar_icon"
+                    android:src="@drawable/prom"
                     android:contentDescription="@string/prom" />
             </LinearLayout>
+
 
             <Button android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
