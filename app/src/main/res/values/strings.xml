@@ -10,9 +10,9 @@
     <string name="jezioro">Jezioro</string>
     <string name="miasto">Miasto</string>
     <string name="klimat">Klimat</string>
-    <string name="cieplo">Ciepło, bez opadów</string>
-    <string name="umiarkowanie">Umiarkowanie</string>
-    <string name="chlodno">Zimno</string>
+    <string name="cieplo">Ciepły</string>
+    <string name="umiarkowanie">Umiarkowany</string>
+    <string name="chlodno">Zimny</string>
     <string name="snieg">snieg</string>
     <string name="aktywnosc">Aktywność</string>
     <string name="opalanie">Opalanie się</string>
@@ -33,4 +33,11 @@
     <string name="samolot">Samolot</string>
     <string name="wyznacz">Wyznacz</string>
     <string name="tajlandia">Tajlandia</string>
+    <string name="dodaj_opcj">Dodaj opcję</string>
+    <string name="wyznacz2">Wyznacz</string>
+    <string name="zapisz">Zapisz</string>
+    <string name="egzotyka">Egzotyka</string>
+    <string name="message">Czy na pewno chcesz usunąć?</string>
+    <string name="ok">Usuń</string>
+    <string name="cancel">Anuluj</string>
 </resources>

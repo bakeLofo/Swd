@@ -1,52 +1,48 @@
 package com.example.klaudia.swd;
 
-        import android.app.ActionBar;
-        import android.app.Activity;
-        import android.app.DatePickerDialog;
-        import android.app.Dialog;
-        import android.content.Intent;
-        import android.graphics.Color;
-        import android.os.Bundle;
-        import android.support.v7.app.AppCompatActivity;
-        import android.view.MenuItem;
-        import android.view.View;
-        import android.widget.ArrayAdapter;
-        import android.widget.DatePicker;
-        import android.widget.ImageButton;
-        import android.widget.LinearLayout;
-        import android.widget.Spinner;
-        import android.widget.TextView;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
-        import java.util.ArrayList;
-        import java.util.Calendar;
-        import java.util.List;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private int day;
-    private int month;
-    private int year;
-    private TextView editText;
+    private Button zapiszButton;
+    private int index = -1;
     private boolean czyMorze = false;
     private boolean czyGory = false;
-    private boolean czyJezioro = false;
     private boolean czyMiasto = false;
     private boolean czyOpalanie = false;
     private boolean czyZwiedzanie = false;
     private boolean czySport = false;
+    private boolean czyCieply = false;
+    private boolean czyUmiarkowany = false;
+    private boolean czyZimny = false;
+
+    private ImageButton cieplyKlimat;
+    private ImageButton umiarkowanyKlimat;
+    private ImageButton zimnyKlimat;
     private ImageButton morzeButton;
     private ImageButton goryButton;
-    private ImageButton jezioroButton;
     private ImageButton miastoButton;
     private ImageButton opalanieButton;
     private ImageButton zwiedzanieButton;
     private ImageButton sportButton;
 
-    private LinearLayout zwiedzanieLayout;
-    private LinearLayout sportLayout;
-
-    private Spinner cenySpinner;
-    private final int color = Color.argb(100, 51, 153, 255);
+    private final int color = Color.argb(100, 0, 204, 102);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,53 +50,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         //android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         //actionBar.setDisplayHomeAsUpEnabled(true);
-        ImageButton button = (ImageButton) findViewById(R.id.imageButton1);
-        Calendar calendar = Calendar.getInstance();
-        day = calendar.get(Calendar.DAY_OF_MONTH);
-        month = calendar.get(Calendar.MONTH);
-        year = calendar.get(Calendar.YEAR);
-        editText = (TextView) findViewById(R.id.editText);
+        zapiszButton = (Button)findViewById(R.id.zapisz_button);
         morzeButton = (ImageButton) findViewById(R.id.morze);
         goryButton = (ImageButton) findViewById(R.id.gory);
-        jezioroButton = (ImageButton) findViewById(R.id.jezioro);
         miastoButton = (ImageButton) findViewById(R.id.miasto);
         opalanieButton = (ImageButton) findViewById(R.id.opalanie);
         zwiedzanieButton = (ImageButton) findViewById(R.id.zwiedzanie);
         sportButton = (ImageButton) findViewById(R.id.sport);
-        zwiedzanieLayout = (LinearLayout) findViewById(R.id.zwiedzanieLayout);
-        sportLayout = (LinearLayout) findViewById(R.id.sportLayout);
-        cenySpinner = (Spinner) findViewById(R.id.ceny);
-        button.setOnClickListener(this);
+        cieplyKlimat = (ImageButton) findViewById(R.id.cieplo);
+        umiarkowanyKlimat = (ImageButton) findViewById(R.id.umiarkowanie);
+        zimnyKlimat = (ImageButton) findViewById(R.id.zimno);
+
         morzeButton.setOnClickListener(this);
         goryButton.setOnClickListener(this);
-        jezioroButton.setOnClickListener(this);
         miastoButton.setOnClickListener(this);
         opalanieButton.setOnClickListener(this);
         zwiedzanieButton.setOnClickListener(this);
         sportButton.setOnClickListener(this);
+        cieplyKlimat.setOnClickListener(this);
+        umiarkowanyKlimat.setOnClickListener(this);
+        zimnyKlimat.setOnClickListener(this);
 
-        this.setFilters();
-        this.createList();
+        //this.setFilters();
+
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            Option editable = (Option) extras.getSerializable("editable");
+            if (editable != null) {
+                index = extras.getInt("pos");
+                this.setSelected(editable);
+            }
+        }
         //button.setColorFilter(Color.argb(100, 51, 153, 255));
-    }
-
-    private void createList() {
-        List<String> cenyL = new ArrayList<>();
-        cenyL.add("Do 1000 zł");
-        cenyL.add("Od 1000 do 3000 zł");
-        cenyL.add("Od 3000 zł do 5000 zł");
-        cenyL.add("Od 5000 zł do 8000 zł");
-        cenyL.add("Powyżej 8000 zł");
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, cenyL);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        cenySpinner.setAdapter(adapter);
-
     }
 
     private void setFilters(){
         morzeButton.setColorFilter(color);
         goryButton.setColorFilter(color);
-        jezioroButton.setColorFilter(color);
         miastoButton.setColorFilter(color);
         opalanieButton.setColorFilter(color);
         zwiedzanieButton.setColorFilter(color);
@@ -110,9 +96,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.editText:
-                showDialog(0);
-                break;
             case R.id.morze:
                 if(czyMorze){
                     morzeButton.clearColorFilter();
@@ -131,16 +114,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else{
                     goryButton.setColorFilter(color);
                     czyGory = true;
-                }
-                break;
-            case R.id.jezioro:
-                if(czyJezioro){
-                    jezioroButton.clearColorFilter();
-                    czyJezioro = false;
-                }
-                else{
-                    jezioroButton.setColorFilter(color);
-                    czyJezioro = true;
                 }
                 break;
             case R.id.miasto:
@@ -167,45 +140,173 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(czyZwiedzanie){
                     zwiedzanieButton.clearColorFilter();
                     czyZwiedzanie = false;
-                    zwiedzanieLayout.setVisibility(View.GONE);
                 }
                 else{
                     zwiedzanieButton.setColorFilter(color);
                     czyZwiedzanie = true;
-                    zwiedzanieLayout.setVisibility(View.VISIBLE);
                 }
                 break;
             case R.id.sport:
                 if(czySport){
                     sportButton.clearColorFilter();
                     czySport = false;
-                    sportLayout.setVisibility(View.GONE);
                 }
                 else{
                     sportButton.setColorFilter(color);
                     czySport = true;
-                    sportLayout.setVisibility(View.VISIBLE);
+                }
+                break;
+            case R.id.cieplo:
+                if(czyCieply){
+                    cieplyKlimat.clearColorFilter();
+                    czyCieply = false;
+                }
+                else{
+                    cieplyKlimat.setColorFilter(color);
+                    czyCieply = true;
+                }
+                break;
+            case R.id.umiarkowanie:
+                if(czyUmiarkowany){
+                    umiarkowanyKlimat.clearColorFilter();
+                    czyUmiarkowany = false;
+                }
+                else{
+                    umiarkowanyKlimat.setColorFilter(color);
+                    czyUmiarkowany = true;
+                }
+                break;
+            case R.id.zimno:
+                if(czyZimny){
+                    zimnyKlimat.clearColorFilter();
+                    czyZimny = false;
+                }
+                else{
+                    zimnyKlimat.setColorFilter(color);
+                    czyZimny = true;
                 }
                 break;
         }
     }
 
-    @Override
-    @Deprecated
-    protected Dialog onCreateDialog(int id){
-        return new DatePickerDialog(this, dateSetListener, year, month, day);
+    public void zapisz(View view) {
+        List<Aktywnosc> aktywnoscList = new ArrayList<>();
+        List<Lokalizacja> lokalizacjaList = new ArrayList<>();
+        Klimat klimat = null;
+
+        if(czySport){
+            aktywnoscList.add(Aktywnosc.SPORT);
+        }
+        if(czyZwiedzanie){
+            aktywnoscList.add(Aktywnosc.ZWIEDZANIE);
+        }
+        if(czyOpalanie){
+            aktywnoscList.add(Aktywnosc.OPALANIE);
+        }
+        if(czyMiasto){
+            lokalizacjaList.add(Lokalizacja.MIASTO);
+        }
+        if(czyGory){
+            lokalizacjaList.add(Lokalizacja.GORY);
+        }
+        if(czyMorze){
+            lokalizacjaList.add(Lokalizacja.MORZE);
+        }
+        if(czyCieply){
+            klimat = Klimat.CIEPLY;
+        }
+        else if(czyUmiarkowany){
+            klimat = Klimat.UMIARKOWANY;
+        }
+        else if(czyZimny){
+            klimat = Klimat.ZIMNY;
+        }
+        Option option = new Option(klimat, aktywnoscList, lokalizacjaList);
+        if(index > -1){
+
+            if(option.isEmpty(option)) {
+                Log.d("Main activity","usunieto opcje" );
+                ListActivity.adapter.remove(option);
+                Toast.makeText(this, "Pusty wybór został usunięty",Toast.LENGTH_SHORT ).show();
+
+            }else {
+                ListActivity.options.set(index, option);
+                Log.d("Main activity","zmieniono opcje" );
+            }
+            ListActivity.adapter.notifyDataSetChanged();
+
+
+
+
+            /*ListActivity.options.remove(index);
+            ListActivity.adapter.notifyDataSetChanged();
+            ListActivity.options.add(index, option);*/
+        }
+        else{
+            ListActivity.options.add(option);
+        }
+        Intent intent = new Intent(MainActivity.this, ListActivity.class);
+        //intent.putExtra("created", option);
+        startActivity(intent);
     }
 
-    private DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener(){
-        public void onDateSet(DatePicker view, int selectedYear,
-                              int selectedMonth, int selectedDay) {
-            editText.setText(selectedDay + " / " + (selectedMonth + 1) + " / "
-                    + selectedYear);
-        }
-    };
+    private void setSelected(Option option){
+        Klimat klimat = option.getKlimat();
+        List<Aktywnosc> aktywnoscList = option.getAktywnoscList();
+        List<Lokalizacja> lokalizacjaList = option.getLokalizacjaList();
 
-    public void wyznacz(View view) {
-        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-        MainActivity.this.startActivity(intent);
+        if(klimat != null){
+            if(klimat == Klimat.CIEPLY){
+                this.setButtonSelected(cieplyKlimat);
+                czyCieply = true;
+            }
+            else if(klimat == Klimat.UMIARKOWANY){
+                this.setButtonSelected(umiarkowanyKlimat);
+                czyUmiarkowany = true;
+            }
+            else{
+                this.setButtonSelected(zimnyKlimat);
+                czyZimny = true;
+            }
+        }
+
+        if(aktywnoscList != null && !aktywnoscList.isEmpty()){
+            for(Aktywnosc akt : aktywnoscList){
+                if(akt == Aktywnosc.OPALANIE){
+                    this.setButtonSelected(opalanieButton);
+                    czyOpalanie = true;
+                }
+                else if(akt == Aktywnosc.SPORT){
+                    this.setButtonSelected(sportButton);
+                    czySport = true;
+                }
+                else{
+                    this.setButtonSelected(zwiedzanieButton);
+                    czyZwiedzanie = true;
+                }
+            }
+        }
+
+        if(lokalizacjaList != null && !lokalizacjaList.isEmpty()){
+            for(Lokalizacja lok : lokalizacjaList){
+                if(lok == Lokalizacja.GORY){
+                    this.setButtonSelected(goryButton);
+                    czyGory = true;
+                }
+                else if(lok == Lokalizacja.MIASTO){
+                    this.setButtonSelected(miastoButton);
+                    czyMiasto = true;
+                }
+                else{
+                    this.setButtonSelected(morzeButton);
+                    czyMorze = true;
+                }
+            }
+        }
+    }
+
+    private void setButtonSelected(ImageButton button){
+        button.setSelected(true);
+        button.setColorFilter(color);
     }
 }
