@@ -63,12 +63,14 @@ public class Option implements Serializable{
         Klimat klimat= option.getKlimat();
         List <Aktywnosc> listaA= option.getAktywnoscList();
         List <Lokalizacja> listaL= option.getLokalizacjaList();
-        if(klimat.getName()=="Ciepło"){
-            lista.add(0);
-        }else if(klimat.getName()=="Umiarkowanie"){
-            lista.add(1);
-        }else if(klimat.getName()=="Zimno"){
-            lista.add(2);
+        if(klimat!=null) {
+            if (klimat.getName() == "Ciepło") {
+                lista.add(0);
+            } else if (klimat.getName() == "Umiarkowanie") {
+                lista.add(1);
+            } else if (klimat.getName() == "Zimno") {
+                lista.add(2);
+            }
         }
         Log.d("Option","convert"+listaA);
         for(Aktywnosc a: listaA) {
