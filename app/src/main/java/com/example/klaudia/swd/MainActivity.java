@@ -1,10 +1,13 @@
 package com.example.klaudia.swd;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -221,21 +224,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if(czyZimny){
             klimat = Klimat.ZIMNY;
         }
-        Option option = new Option(klimat, aktywnoscList, lokalizacjaList);
+       final Option option = new Option(klimat, aktywnoscList, lokalizacjaList);
         if(index > -1){
 
             if(option.isEmpty(option)) {
-                Log.d("Main activity","usunieto opcje" );
-                ListActivity.adapter.remove(option);
-                Toast.makeText(this, "Pusty wybór został usunięty",Toast.LENGTH_SHORT ).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.myDialog));
+                builder.setMessage(R.string.message).setTitle("Pusty wybór zostanie usunięty, jesteś pewny?");
+                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.d("Main activity","usunieto opcje" );
+                        ListActivity.adapter.remove(option);
+                        ListActivity.adapter.notifyDataSetChanged();
+                        Intent intent = new Intent(MainActivity.this, ListActivity.class);
+                        //intent.putExtra("created", option);
+                        startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                dialog.setCancelable(false);
+
 
             }else {
                 ListActivity.options.set(index, option);
+                ListActivity.adapter.notifyDataSetChanged();
                 Log.d("Main activity","zmieniono opcje" );
+                Intent intent = new Intent(MainActivity.this, ListActivity.class);
+                //intent.putExtra("created", option);
+                startActivity(intent);
             }
-            ListActivity.adapter.notifyDataSetChanged();
-
-
 
 
             /*ListActivity.options.remove(index);
@@ -244,10 +268,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         else{
             ListActivity.options.add(option);
+            Intent intent = new Intent(MainActivity.this, ListActivity.class);
+            //intent.putExtra("created", option);
+            startActivity(intent);
         }
-        Intent intent = new Intent(MainActivity.this, ListActivity.class);
-        //intent.putExtra("created", option);
-        startActivity(intent);
+
     }
 
     private void setSelected(Option option){

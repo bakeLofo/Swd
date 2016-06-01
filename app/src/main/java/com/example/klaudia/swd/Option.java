@@ -21,7 +21,6 @@ public class Option implements Serializable{
     }
 
     public Klimat getKlimat() {
-
         return klimat;
     }
 
@@ -45,7 +44,7 @@ public class Option implements Serializable{
         this.lokalizacjaList = lokalizacjaList;
     }
 
-    @Override
+   @Override
     public boolean equals(Object option){
         return true;//TODO
     }
