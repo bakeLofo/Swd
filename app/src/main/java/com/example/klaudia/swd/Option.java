@@ -94,7 +94,6 @@ public class Option implements Serializable{
                 lista.add(9);
             }
         }
-       // uuuu tu skonczylas!!!
         return lista;
     }
 }

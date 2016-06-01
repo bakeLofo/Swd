@@ -91,35 +91,11 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         Log.d("ListActivity","options size"+options.size());
         for(Option o: options){
             choices.add(o.convertOptionToNumbers(o));
-           //List <Integer> lista= new ArrayList<Integer>;
         }
-
         for (List<Integer> choice : choices){
             Log.d("ListActivity","co zawiera wybor"+choice);
         }
-        /*for(int i=0;i< options.size();i++){
-            choices.add(new ArrayList<Integer>());
-        }*/
 
-       /* for(int i=0;i< options.size();i++){
-            choices.get(i).add(options.get(i).getKlimat().getNumber(options.get(i).getKlimat().getName()));
-            Log.d("ListActivity","dodalem klimat"+options.get(i).getKlimat().getNumber(options.get(i).getKlimat().getName()));
-        }*/
-
-        //firstChoice.add(1);
-        //firstChoice.add(5);
-       /* int ile_w_liscie=1;
-        for(int i=0; i<ile_list; i++) {
-            choices.get(i).addAll(options)
-            //choices.get(i).add(options.);
-        }
-        secondChoice.add(0);
-        secondChoice.add(7);
-        secondChoice.add(6);
-        thirdChoice.add(8);
-        choices.add(firstChoice);
-        choices.add(secondChoice);
-        choices.add(thirdChoice);*/
         for(List<Integer> choice : choices) {
            // System.out.println("Wybor: ");
             //  choice.
@@ -130,9 +106,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
             for (List<Boolean> lista : l.policz(choice)) {
                 for (Boolean b : lista) {
                     o= o+"  "+  b.toString();
-
                 }
-
             }
             Log.d("ListActivity"," "+o);
         }
