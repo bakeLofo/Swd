@@ -28,7 +28,7 @@ public class lrw2 {
     */
 
 
-    private List<List<Boolean>> policz(List<Integer> choices){
+    public List<List<Boolean>> policz(List<Integer> choices){
         List<List<Boolean>> list = new ArrayList<>();
         int n = 15;
         int rows = (int) Math.pow(2, n);

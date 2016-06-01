@@ -260,11 +260,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //intent.putExtra("created", option);
                 startActivity(intent);
             }
-
-
-            /*ListActivity.options.remove(index);
-            ListActivity.adapter.notifyDataSetChanged();
-            ListActivity.options.add(index, option);*/
         }
         else{
             ListActivity.options.add(option);
