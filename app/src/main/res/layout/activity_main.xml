@@ -14,34 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/miejsce"/>
-
-            <LinearLayout android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/morze"
-                    android:contentDescription="@string/morze"
-                    android:id="@+id/morze"/>
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/gory"
-                    android:contentDescription="@string/mountains"
-                    android:id="@+id/gory"/>
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/miasto"
-                    android:contentDescription="@string/miasto"
-                    android:id="@+id/miasto"/>
-            </LinearLayout>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -96,11 +68,41 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/sport"
                 android:contentDescription="@string/sport" />
-        </LinearLayout>
 
-        <CheckBox
-            android:id="@+id/egzotyka"
-            android:text="@string/egzotyka"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/miejsce"/>
+
+        <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/morze"
+                android:contentDescription="@string/morze"
+                android:id="@+id/morze"/>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/gory"
+                android:contentDescription="@string/mountains"
+                android:id="@+id/gory"/>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/miasto"
+                android:contentDescription="@string/miasto"
+                android:id="@+id/miasto"/>
+
+            <ImageButton
+                android:id="@+id/egzotyka"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/egzotyka"
+                android:text="@string/egzotyka"/>
+        </LinearLayout>
 
 
         <Button android:layout_height="wrap_content"

@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button zapiszButton;
     private int index = -1;
     private boolean czyMorze = false;
+    private boolean czyEgzotyka=false;
     private boolean czyGory = false;
     private boolean czyMiasto = false;
     private boolean czyOpalanie = false;
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton opalanieButton;
     private ImageButton zwiedzanieButton;
     private ImageButton sportButton;
+    private ImageButton egzotykaButton;
 
     private final int color = Color.argb(100, 0, 204, 102);
 
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cieplyKlimat = (ImageButton) findViewById(R.id.cieplo);
         umiarkowanyKlimat = (ImageButton) findViewById(R.id.umiarkowanie);
         zimnyKlimat = (ImageButton) findViewById(R.id.zimno);
+        egzotykaButton= (ImageButton) findViewById(R.id.egzotyka);
 
         morzeButton.setOnClickListener(this);
         goryButton.setOnClickListener(this);
@@ -73,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cieplyKlimat.setOnClickListener(this);
         umiarkowanyKlimat.setOnClickListener(this);
         zimnyKlimat.setOnClickListener(this);
+        egzotykaButton.setOnClickListener(this);
 
         //this.setFilters();
 
@@ -94,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         opalanieButton.setColorFilter(color);
         zwiedzanieButton.setColorFilter(color);
         sportButton.setColorFilter(color);
+        egzotykaButton.setColorFilter(color);
     }
 
     @Override
@@ -127,6 +132,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else{
                     miastoButton.setColorFilter(color);
                     czyMiasto = true;
+                }
+                break;
+            case R.id.egzotyka:
+                if(czyEgzotyka){
+                    egzotykaButton.clearColorFilter();
+                    czyEgzotyka = false;
+                }
+                else{
+                    egzotykaButton.setColorFilter(color);
+                    czyEgzotyka = true;
                 }
                 break;
             case R.id.opalanie:
@@ -214,6 +229,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if(czyMorze){
             lokalizacjaList.add(Lokalizacja.MORZE);
+        }
+        if(czyEgzotyka){
+            lokalizacjaList.add(Lokalizacja.EGZOTYKA);
         }
         if(czyCieply){
             klimat = Klimat.CIEPLY;
@@ -316,6 +334,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else if(lok == Lokalizacja.MIASTO){
                     this.setButtonSelected(miastoButton);
                     czyMiasto = true;
+                }
+                else if(lok == Lokalizacja.EGZOTYKA){
+                    this.setButtonSelected(egzotykaButton);
+                    czyEgzotyka = true;
                 }
                 else{
                     this.setButtonSelected(morzeButton);

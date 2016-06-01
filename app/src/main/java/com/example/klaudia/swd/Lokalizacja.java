@@ -5,7 +5,7 @@ package com.example.klaudia.swd;
  */
 public enum Lokalizacja {
 
-    MIASTO("Miasto"), GORY("Góry"), MORZE("Morze");
+    MIASTO("Miasto"), GORY("Góry"), MORZE("Morze") , EGZOTYKA("Egzotyka");
 
     private String name;
     Lokalizacja(String name){

@@ -88,18 +88,23 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
 
         lrw2 l = new lrw2();
         List<List<Integer>> choices = new ArrayList<>();
-       /* for(Option o: options){
-            choices.add(o);
-
-        }*/
-        for(int i=0;i< options.size();i++){
-            choices.add(new ArrayList<Integer>());
-        }
         Log.d("ListActivity","options size"+options.size());
-        for(int i=0;i< options.size();i++){
+        for(Option o: options){
+            choices.add(o.convertOptionToNumbers(o));
+           //List <Integer> lista= new ArrayList<Integer>;
+        }
+
+        for (List<Integer> choice : choices){
+            Log.d("ListActivity","co zawiera wybor"+choice);
+        }
+        /*for(int i=0;i< options.size();i++){
+            choices.add(new ArrayList<Integer>());
+        }*/
+
+       /* for(int i=0;i< options.size();i++){
             choices.get(i).add(options.get(i).getKlimat().getNumber(options.get(i).getKlimat().getName()));
             Log.d("ListActivity","dodalem klimat"+options.get(i).getKlimat().getNumber(options.get(i).getKlimat().getName()));
-        }
+        }*/
 
         //firstChoice.add(1);
         //firstChoice.add(5);
