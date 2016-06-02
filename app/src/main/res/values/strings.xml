@@ -40,4 +40,5 @@
     <string name="message">Czy na pewno chcesz usunąć?</string>
     <string name="ok">Usuń</string>
     <string name="cancel">Anuluj</string>
+    <string name="wynik">Proponowane wycieczki: </string>
 </resources>

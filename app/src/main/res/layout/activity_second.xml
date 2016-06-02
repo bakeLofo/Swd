@@ -6,12 +6,11 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:text="@string/tajlandia"
+        android:layout_marginTop="20dp"
+        android:text="@string/wynik"
+        android:textColor="@color/colorPrimary"
         android:textSize="30sp"/>
 
-    <ImageView
-        android:src="@drawable/thailand"
-        android:contentDescription="@string/tajlandia" />
 
     <ScrollView>
         <LinearLayout
@@ -20,40 +19,11 @@
             android:orientation="vertical">
 
             <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Opis miejsca"
-            android:textSize="18sp"/>
-
-            <TextView
+                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Morze"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Coś o opadach"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Co tu można robić"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Cena"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Możliwy transport: samolot"
-                android:textSize="18sp"/>
+                android:id="@+id/miejsca"
+                android:textSize="30sp"/>
         </LinearLayout>
     </ScrollView>
 </TableLayout>

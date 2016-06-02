@@ -109,12 +109,17 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
 
         Log.d("ListActivity"," Wynik w boolean: "+results);
         Log.d("ListActivity", "Wynik w stringu: "+interpretResult(results));
+        ArrayList<String> wynik= interpretResult(results);
+        Intent intent =  new Intent(ListActivity.this, SecondActivity.class);
+        intent.putStringArrayListExtra("miejsca",wynik);
+        ListActivity.this.startActivity(intent);
+
 
     }
 
-    public List<String>  interpretResult(List<List<Boolean>> lista){
+    public ArrayList<String>  interpretResult(List<List<Boolean>> lista){
         List <String> wynik = new ArrayList<>();
-        List <String> miejsca = new ArrayList<>();
+        ArrayList <String> miejsca = new ArrayList<>();
 
         for( List<Boolean> listek: lista){
             wynik.add(listek.toString());
@@ -141,10 +146,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
                 if(!(miejsca.contains("Alpy")))
                     miejsca.add("Alpy");
             }
-
         }
-
-
         return miejsca;
     }
 
