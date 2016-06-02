@@ -276,6 +276,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d("Main activity","zmieniono opcje" );
                 Intent intent = new Intent(MainActivity.this, ListActivity.class);
                 //intent.putExtra("created", option);
+                this.finish();
                 startActivity(intent);
             }
         }
@@ -283,6 +284,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ListActivity.options.add(option);
             Intent intent = new Intent(MainActivity.this, ListActivity.class);
             //intent.putExtra("created", option);
+            this.finish();
             startActivity(intent);
         }
 

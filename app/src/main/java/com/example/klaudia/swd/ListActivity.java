@@ -158,6 +158,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(ListActivity.this, MainActivity.class);
+        this.finish();
         ListActivity.this.startActivity(intent);
     }
 }
