@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -88,6 +89,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
 
         lrw2 l = new lrw2();
         List<List<Integer>> choices = new ArrayList<>();
+        List<List<Boolean>> results = new ArrayList<>();
         Log.d("ListActivity","options size"+options.size());
         for(Option o: options){
             choices.add(o.convertOptionToNumbers(o));
@@ -97,20 +99,53 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         for(List<Integer> choice : choices) {
-           // System.out.println("Wybor: ");
-            //  choice.
-            // choice.forEach(c -> System.out.print(c + " "));
-           // System.out.println();
-            String o="";
-            Log.d("ListActivity","Wynik: ");
             for (List<Boolean> lista : l.policz(choice)) {
-                for (Boolean b : lista) {
-                    o= o+"  "+  b.toString();
+                if (!(results.contains(lista))) {
+                    results.add(lista);
                 }
             }
-            Log.d("ListActivity"," "+o);
         }
 
+
+        Log.d("ListActivity"," Wynik w boolean: "+results);
+        Log.d("ListActivity", "Wynik w stringu: "+interpretResult(results));
+
+    }
+
+    public List<String>  interpretResult(List<List<Boolean>> lista){
+        List <String> wynik = new ArrayList<>();
+        List <String> miejsca = new ArrayList<>();
+
+        for( List<Boolean> listek: lista){
+            wynik.add(listek.toString());
+        }
+        for(String miejsce: wynik){
+            if(miejsce.equals("[true, false, false, false, false]")){
+                Log.d("ListActivity", "Rzym");
+                if(!(miejsca.contains("Rzym")))
+                miejsca.add("Rzym");
+            }else if(miejsce.equals("[false, true, false, false, false]")){
+                Log.d("ListActivity", "Gran Canaria");
+                if(!(miejsca.contains("Gran Canaria")))
+                    miejsca.add("Gran Canaria");
+            }else if(miejsce.equals("[false, false, true, false, false]")){
+                Log.d("ListActivity", "Tajlandia");
+                if(!(miejsca.contains("Tajlandia")))
+                    miejsca.add("Tajlandia");
+            } else if(miejsce.equals("[false, false, false, true, false]")){
+                Log.d("ListActivity", "Gdańsk");
+                if(!(miejsca.contains("Gdańsk")))
+                    miejsca.add("Gdańsk");
+            }else if(miejsce.equals("[false, false, false, false, true]")){
+                Log.d("ListActivity", "Alpy");
+                if(!(miejsca.contains("Alpy")))
+                    miejsca.add("Alpy");
+            }
+
+        }
+
+
+        return miejsca;
     }
 
     @Override

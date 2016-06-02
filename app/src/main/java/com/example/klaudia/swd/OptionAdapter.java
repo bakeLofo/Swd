@@ -36,7 +36,7 @@ public class OptionAdapter extends ArrayAdapter<Option> {
         if(options.get(position).getKlimat() != null) {
             klimat.setText(options.get(position).getKlimat().getName());
 
-        }else{klimat.setText(" ");}
+        }else{klimat.setText("");}
         StringBuilder sb = new StringBuilder();
         for(Aktywnosc akt : options.get(position).getAktywnoscList()){
             sb.append(akt.getName());
